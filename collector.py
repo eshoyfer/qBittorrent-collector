@@ -3,6 +3,7 @@ import sys
 import fileinput
 import glob
 import shutil
+import namefinder
 
 ## Begin Reading Initial Arguments ## 
 
