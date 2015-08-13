@@ -64,9 +64,14 @@ def namefinder(path_to_file):
 ## End Name Finder for Filename ##
 
 ## Copy and Rename Files ## 
-for this_file in os.listdir(specified_path):
-	this_abs_path = os.path.join(specified_path, this_file)
-	shutil.copyfile(specified_path, "./")
+
+#open(os.path.join(specified_path, 'shmacked.txt'), 'w').write('this is a test')
+#for this_file in os.listdir(specified_path):
+#	this_abs_path = os.path.join(specified_path, this_file)
+#	print this_abs_path, this_file
+#	shutil.copyfile(specified_path, "./")
+
+shutil.copy(specified_path, "./")
 
 ## End Copy and Rename Files ##
 
