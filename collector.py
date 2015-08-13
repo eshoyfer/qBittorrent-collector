@@ -2,6 +2,7 @@ import os
 import sys
 import fileinput
 import glob
+import shutil
 
 # Windows BT_backup location:
 # C:\Users\<user>\AppData\Local\qBittorrent\BT_backup
@@ -15,6 +16,8 @@ import glob
 
 #print sys.argv
 
+## Reading Initial Arguments ## 
+
 if len(sys.argv) > 1:
 	# AppData folder supplied
 	input_dir = sys.argv[1]
@@ -27,6 +30,9 @@ else:
 
 if not os.path.exists(specified_path):
 	sys.exit("Invalid path!\nThe folder is typically located at C:\Users\<user>\AppData.\nSupply no arguments to attempt finding the default folder.")
+
+
+## End Reading Initial Arguments ## 
 
 path = 'test.torrent'
 
@@ -57,6 +63,7 @@ def namefinder(path_to_file):
 
 ## End Name Finder for Filename ##
 
+## 
 
 ## Misc Testing ## 
 
@@ -77,3 +84,5 @@ def namefinder(path_to_file):
 #print sys.argv
 #print sys.argv[1]
 #print input_dir
+
+## End Misc Testing ##
