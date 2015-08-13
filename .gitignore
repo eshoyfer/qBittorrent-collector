@@ -1,3 +1,4 @@
 *.fastresume
 *.torrent
+*.pyc
 BT_backup/desktop.ini
