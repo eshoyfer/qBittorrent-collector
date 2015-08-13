@@ -7,7 +7,7 @@
 # Quick and dirty: things can go wrong. But the filename is just a suggestion, anyway.
 
 def namefinder(path_to_file):
-	rawdata = open(path).read()
+	rawdata = open(path_to_file).read()
 	split_data = rawdata.split(':')[:-1]
 
 	counter = 0
@@ -21,7 +21,7 @@ def namefinder(path_to_file):
 			piece_index = counter
 		counter += 1
 
-	filename = split_data[name_index + 1][:-2] # Remove the encoding-residue "12" leftover at the end of the name
+	filename = split_data[name_index + 1][:-2] + '.torrent' # Remove the encoding-residue "12" leftover at the end of the name
 
 	return filename
 

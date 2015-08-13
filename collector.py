@@ -37,9 +37,20 @@ if not (os.path.exists(source_dir) and os.path.exists(dest_dir)):
 
 ## Begin Copying Torrent Files ##
 
-files = glob.iglob(os.path.join(source_dir, "*.torrent"))
-for file in files:
+source_files = glob.iglob(os.path.join(source_dir, "*.torrent"))
+for file in source_files:
     if os.path.isfile(file):
         shutil.copy2(file, dest_dir)
 
 ## End Copying Torrent Files ##
+
+## Renaming Torrent Files ##
+
+# Relies on namefinder(path_to_file) from namefinder.py
+
+dest_files = glob.iglob(os.path.join(dest_dir, "*.torrent"))
+for file in dest_files:
+	new_filename = os.path.join(dest_dir, namefinder.namefinder(file))
+	os.rename(file, new_filename)
+
+## End Renaming Torrent Files ## 
