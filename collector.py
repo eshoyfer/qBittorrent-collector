@@ -29,25 +29,31 @@ if not os.path.exists(specified_path):
 	sys.exit("Invalid path!\nThe folder is typically located at C:\Users\<user>\AppData.\nSupply no arguments to attempt finding the default folder.")
 
 path = 'test.torrent'
-rawdata = open(path).read()
-split_data = rawdata.split(':')[:-1]
-print rawdata.find('name')
-print rawdata.find('piece')
 
 ## Name Finder for Filename ## 
 
-counter = 0
-name_index = 0
-piece_index = 0
-for item in split_data:
-	# name_index and piece_index should only be recorded on their first occurance
-	if ('name' in item) and (name_index == 0):
-		name_index = counter
-	if ('piece' in item) and (piece_index == 0):
-		piece_index = counter
-	counter += 1
+# Returns a string with suggested filename for the .torrent,
+# extracted (in a butchered manner) from the encoded bencode.
 
-filename = split_data[name_index + 1][:-2] # Remove the encoding-residue "12" leftover at the end of the name
+# Done this way due to apparant issues with decoding bencode of torrent files from BT_backup.
+# Quick and dirty: things can go wrong. But the filename is just a suggestion, anyway.
+
+def namefinder(path_to_file):
+	rawdata = open(path).read()
+	split_data = rawdata.split(':')[:-1]
+
+	counter = 0
+	name_index = 0
+	piece_index = 0
+	for item in split_data:
+		# name_index and piece_index should only be recorded on their first occurance
+		if ('name' in item) and (name_index == 0):
+			name_index = counter
+		if ('piece' in item) and (piece_index == 0):
+			piece_index = counter
+		counter += 1
+
+	filename = split_data[name_index + 1][:-2] # Remove the encoding-residue "12" leftover at the end of the name
 
 ## End Name Finder for Filename ##
 
